@@ -186,14 +186,14 @@ def draw_direction_belief(screen, center_x, center_y, belief, robot, font):
         pygame.draw.polygon(screen, color, triangle)
         pygame.draw.polygon(screen, EDGE_COLOR, triangle, 1)
 
-        text_angle = np.radians(60 * i)
-        text_x = center_x + dir_hex_size * 0.7 * np.cos(text_angle)
-        text_y = center_y + dir_hex_size * 0.7 * np.sin(text_angle)
+        text_angle = np.radians(60 * (i + 1))
+        text_x = center_x + dir_hex_size * 0.6 * np.cos(text_angle)
+        text_y = center_y + dir_hex_size * 0.6 * np.sin(text_angle)
 
         avg_bright = sum(color) / 3
         text_color = (0, 0, 0) if avg_bright > 128 else (255, 255, 255)
 
-        label = small_font.render(str(angle_key), True, text_color)
+        label = small_font.render(str(angle_key*60), True, text_color)
         screen.blit(label, label.get_rect(center=(text_x, text_y)))
 
         if robot is not None and angle_key == robot.direction:
