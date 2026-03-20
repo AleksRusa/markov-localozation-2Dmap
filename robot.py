@@ -65,13 +65,3 @@ class Robot:
     
     def get_status(self):
         return (self.belief.get_most_probable_hex(), self.belief.get_confidence())
-
-    def forward(self):
-        return self.move_forward()
-    
-    def rotate(self, angle):
-        if angle == 60:
-            return self.turn(1)
-        elif angle == -60:
-            return self.turn(5)
-        return None
